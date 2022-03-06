@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 
-#include <fstream>
-#include <sstream>
 #include <bufferController.h>
 
 const size_t k_maxAllowedBufferSize = 1000;
@@ -22,6 +20,8 @@ struct UserInput
 UserInput CreateFromInput(std::istream& input, std::ostream& userPrompt)
 {
   UserInput providedInput{};
+  size_t size = -2;
+  std::cout << size << std::endl;
   userPrompt << "Enter pattern to be repeated" << std::endl;
   std::getline(input, providedInput.toRepeat);
   userPrompt << "Enter number of repetition" << std::endl;
@@ -36,7 +36,11 @@ UserInput CreateFromInput(std::istream& input, std::ostream& userPrompt)
 int main() {
 //  auto result = CreateFromInput(std::cin, std::cout);
 //  std::cout << result << std::endl;
-  printNthTimes(std::cout, "a", 10);
+  const std::string expectedOutput = "abab\nab";
+  const std::string actualPattern = "ab";
+  const int actualMaxBufferSize = 5;
+  const int actualRepetition = 3;
+  printNthTimes(std::cout, actualPattern, actualRepetition, true, actualMaxBufferSize);
   return 0;
 }
 

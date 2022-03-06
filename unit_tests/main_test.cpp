@@ -2,14 +2,52 @@
 // Created by nicegraphic on 3/6/22.
 //
 
-#define BOOST_TEST_MODULE example
+#define BOOST_TEST_MODULE "Unit Test for N-Fill"
+
 #include <boost/test/included/unit_test.hpp>
 
 #include <bufferController.h>
 
-BOOST_AUTO_TEST_CASE( free_test_function )
-/* Compare with void free_test_function() */
+
+BOOST_AUTO_TEST_CASE( test_with_new_line )
 {
-  BOOST_TEST( false /* test assertion */ );
+  // Set up
+  const std::string expectedOutput = "abab\nab";
+  const std::string actualPattern = "ab";
+  const int actualMaxBufferSize = 5;
+  const int actualRepetition = 3;
+
+  std::ostringstream os{};
+  printNthTimes(os, actualPattern, actualRepetition, true, actualMaxBufferSize);
+
+  BOOST_CHECK_EQUAL(os.str(), expectedOutput);
+}
+
+BOOST_AUTO_TEST_CASE( test_noNewLine )
+{
+  // Set up
+  const std::string expectedOutput = "********************";
+  const std::string actualPattern = "*";
+  const int actualRepetition = 20;
+
+  std::ostringstream os{};
+  printNthTimes(os, actualPattern, 20, false);
+
+  BOOST_CHECK_EQUAL(os.str(), expectedOutput);
+}
+
+BOOST_AUTO_TEST_CASE( test_with_empty_pattern)
+{
+  // Set up
+  const std::string expectedOutput;
+  const std::string actualPattern;
+  const int actualRepetition = 20;
+
+  // Act
+  std::ostringstream os{};
+  printNthTimes(os, actualPattern, actualRepetition, false);
+
+  // Assert
+  BOOST_CHECK(os.str().empty());
 }
 

@@ -7,11 +7,11 @@
 void flushBuffer(std::ostream& toFlush, bool flushWithNewLine);
 
 void printNthTimes(std::ostream &output,
-	 const std::string &toRepeat,
-	 size_t timesToRepeat,
-	 bool withNLine,
-	 size_t maxBufferSize
-   )
+	const std::string &toRepeat,
+	unsigned int timesToRepeat,
+	bool withNLine,
+	unsigned int maxBufferSize
+  )
 {
   const auto sizeOfOneRepeat = toRepeat.size();
   size_t bufferCount = 0;

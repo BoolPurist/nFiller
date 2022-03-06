@@ -10,10 +10,10 @@
 #define MAX_ALLOWED_BUFFER_SIZE 1000
 
 void printNthTimes(std::ostream &output,
-  const std::string &toRepeat,
-  size_t timesToRepeat,
-  bool withNLine = true,
-  size_t maxBufferSize = MAX_ALLOWED_BUFFER_SIZE
+   const std::string &toRepeat,
+   unsigned int timesToRepeat,
+   bool withNLine = true,
+   unsigned int maxBufferSize = MAX_ALLOWED_BUFFER_SIZE
 );
 
 #endif //NFILER__BUFFERCONTROLLER_H_
