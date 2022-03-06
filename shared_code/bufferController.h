@@ -6,6 +6,7 @@
 #define NFILER__BUFFERCONTROLLER_H_
 
 #include <iostream>
+#include <UserInput.h>
 
 #define MAX_ALLOWED_BUFFER_SIZE 1000
 
@@ -15,5 +16,7 @@ void printNthTimes(std::ostream &output,
    bool withNLine = true,
    unsigned int maxBufferSize = MAX_ALLOWED_BUFFER_SIZE
 );
+
+UserInput CreateFromInput(std::istream& input, std::ostream& userPrompt);
 
 #endif //NFILER__BUFFERCONTROLLER_H_

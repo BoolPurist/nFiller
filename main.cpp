@@ -1,21 +1,11 @@
 #include <iostream>
 #include <string>
-
+#include <sstream>
 #include <bufferController.h>
 
 const size_t k_maxAllowedBufferSize = 1000;
 
-struct UserInput
-{
-  std::string toRepeat;
-  int numberOfRepeat;
 
-  friend std::ostream &operator<<(std::ostream &os, const UserInput &input)
-  {
-	os << "toRepeat: " << input.toRepeat << " numberOfRepeat: " << input.numberOfRepeat;
-	return os;
-  }
-};
 
 UserInput CreateFromInput(std::istream& input, std::ostream& userPrompt)
 {
@@ -34,13 +24,7 @@ UserInput CreateFromInput(std::istream& input, std::ostream& userPrompt)
 }
 
 int main() {
-//  auto result = CreateFromInput(std::cin, std::cout);
-//  std::cout << result << std::endl;
-  const std::string expectedOutput = "abab\nab";
-  const std::string actualPattern = "ab";
-  const int actualMaxBufferSize = 5;
-  const int actualRepetition = 3;
-  printNthTimes(std::cout, actualPattern, actualRepetition, true, actualMaxBufferSize);
+
   return 0;
 }
 

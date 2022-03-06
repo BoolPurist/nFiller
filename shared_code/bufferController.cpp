@@ -3,6 +3,7 @@
 //
 
 #include "bufferController.h"
+#include "UserInput.h"
 
 void flushBuffer(std::ostream& toFlush, bool flushWithNewLine);
 
@@ -35,6 +36,22 @@ void printNthTimes(std::ostream &output,
   }
 
   output.flush();
+}
+
+UserInput CreateFromInput(std::istream& input, std::ostream& userPrompt)
+{
+  UserInput providedInput{};
+  size_t size = -2;
+  std::cout << size << std::endl;
+  userPrompt << "Enter pattern to be repeated" << std::endl;
+  std::getline(input, providedInput.toRepeat);
+  userPrompt << "Enter number of repetition" << std::endl;
+  input >> providedInput.numberOfRepeat;
+  if (input.fail())
+  {
+	userPrompt << "No valid number provided" << std::endl;
+  }
+  return providedInput;
 }
 
 void flushBuffer(std::ostream& toFlush, bool flushWithNewLine)
