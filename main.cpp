@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
-#include "bufferController.h"
 #include <fstream>
 #include <sstream>
+#include <bufferController.h>
 
 const size_t k_maxAllowedBufferSize = 1000;
 
@@ -34,8 +34,9 @@ UserInput CreateFromInput(std::istream& input, std::ostream& userPrompt)
 }
 
 int main() {
-  auto result = CreateFromInput(std::cin, std::cout);
-  std::cout << result << std::endl;
+//  auto result = CreateFromInput(std::cin, std::cout);
+//  std::cout << result << std::endl;
+  printNthTimes(std::cout, "a", 10);
   return 0;
 }
 
