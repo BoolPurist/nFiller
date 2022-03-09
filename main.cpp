@@ -20,8 +20,6 @@ int main(int argc, char** argv) {
     handleCommandLineInput(argc, argv);
   }
 
-
-
   return 0;
 }
 

@@ -1,12 +1,14 @@
 cmake_minimum_required(VERSION 3.21)
-project(nFiler)
+project(nFiller)
 
 set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(shared_code)
 add_subdirectory(unit_tests)
+include(functions_and_macros.cmake)
 
-add_executable(nFiler main.cpp)
-target_link_libraries(nFiler PUBLIC shared_code)
+add_executable(${PROJECT_NAME} main.cpp)
 
-install(TARGETS nFiler DESTINATION nFiller CONFIGURATIONS Debug)
+target_link_libraries(${PROJECT_NAME} PUBLIC shared_code)
+
+install(TARGETS ${PROJECT_NAME} CONFIGURATIONS Debug)
