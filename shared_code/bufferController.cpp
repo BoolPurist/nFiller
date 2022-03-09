@@ -48,7 +48,7 @@ void printNthTimes(
     }
   }
 
-  output.flush();
+  output << std::endl;
 }
 
 UserInput askUserForRepetition(std::istream& input, std::ostream& userPrompt)

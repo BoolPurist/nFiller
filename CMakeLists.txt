@@ -8,3 +8,5 @@ add_subdirectory(unit_tests)
 
 add_executable(nFiler main.cpp)
 target_link_libraries(nFiler PUBLIC shared_code)
+
+install(TARGETS nFiler DESTINATION nFiller CONFIGURATIONS Debug)

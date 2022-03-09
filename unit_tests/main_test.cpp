@@ -17,7 +17,7 @@ BOOST_AUTO_TEST_SUITE( test_printNTimes )
 BOOST_AUTO_TEST_CASE( test_with_new_line )
 {
   // Set up
-  const std::string expectedOutput = "abab\nab";
+  const std::string expectedOutput = "abab\nab\n";
   const std::string actualPattern = "ab";
   const int actualMaxBufferSize = 5;
   const int actualRepetition = 3;
@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE( test_with_new_line )
 BOOST_AUTO_TEST_CASE( test_noNewLine )
 {
   // Set up
-  const std::string expectedOutput = "********************";
+  const std::string expectedOutput = "********************\n";
   const std::string actualPattern = "*";
   const int actualRepetition = 20;
 
@@ -41,11 +41,32 @@ BOOST_AUTO_TEST_CASE( test_noNewLine )
   BOOST_CHECK_EQUAL(os.str(), expectedOutput);
 }
 
+
+BOOST_AUTO_TEST_CASE( test_noNewLine_several_flushes )
+{
+  // Set up
+  const std::string expectedOutput = "********************\n";
+  const std::string actualPattern = "*";
+  const int actualRepetition = 20;
+  const int actualMaxBufferSize = 10;
+
+  std::ostringstream os{};
+  printNthTimes(
+      os,
+      actualPattern,
+      actualRepetition,
+      false,
+      actualMaxBufferSize
+    );
+
+  BOOST_CHECK_EQUAL(os.str(), expectedOutput);
+}
+
 BOOST_AUTO_TEST_CASE( test_with_empty_pattern)
 {
   // Set up
-  const std::string expectedOutput;
-  const std::string actualPattern;
+  const std::string expectedOutput{"\n"};
+  const std::string actualPattern{};
   const int actualRepetition = 20;
 
   // Act
@@ -53,7 +74,7 @@ BOOST_AUTO_TEST_CASE( test_with_empty_pattern)
   printNthTimes(os, actualPattern, actualRepetition, false);
 
   // Assert
-  BOOST_CHECK(os.str().empty());
+  BOOST_CHECK(os.str() == expectedOutput);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -112,6 +133,22 @@ BOOST_AUTO_TEST_CASE( test_if_out_of_range_thrown )
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_AUTO_TEST_SUITE( test_UserInput )
+
+BOOST_AUTO_TEST_CASE(test_ouputstream_operater)
+{
+  const UserInput actualUserInput{"yu", 2};
+  const std::string expectedOutput{"toRepeat: yu numberOfRepeat: 2"};
+
+  std::ostringstream actualOutput{};
+  actualOutput << actualUserInput;
+
+  BOOST_CHECK_EQUAL(expectedOutput, actualOutput.str());
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
 
 void testForCreateFromInput(const UserInput &expectedUserInput)
 {

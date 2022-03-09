@@ -31,7 +31,9 @@ int main() {
   printNthTimes(
       std::cout,
       userInput.toRepeat,
-      absoluteAmount
+      absoluteAmount,
+      false,
+      10
     );
 
   return 0;
