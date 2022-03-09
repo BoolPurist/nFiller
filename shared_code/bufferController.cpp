@@ -54,8 +54,6 @@ void printNthTimes(
 UserInput askUserForRepetition(std::istream& input, std::ostream& userPrompt)
 {
   UserInput providedInput{};
-  size_t size = -2;
-  std::cout << size << std::endl;
 
   userPrompt << "Enter pattern to be repeated" << std::endl;
   std::getline(input, providedInput.toRepeat);
