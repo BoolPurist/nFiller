@@ -14,6 +14,7 @@ struct UserInput
   int numberOfRepeat;
   UserInput(const std::string &to_repeat, int number_of_repeat);
   UserInput();
+  std::string ReconstructSingleInput() const;
   friend std::ostream &operator<<(std::ostream &os, const UserInput &input);
 };
 

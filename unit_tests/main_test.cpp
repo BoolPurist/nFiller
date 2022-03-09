@@ -9,6 +9,8 @@
 #include <bufferController.h>
 #include <UserInput.h>
 
+void testForCreateFromInput(const UserInput &expectedUserInput);
+
 BOOST_AUTO_TEST_SUITE( test_printNTimes )
 
 BOOST_AUTO_TEST_CASE( test_with_new_line )
@@ -33,7 +35,7 @@ BOOST_AUTO_TEST_CASE( test_noNewLine )
   const int actualRepetition = 20;
 
   std::ostringstream os{};
-  printNthTimes(os, actualPattern, 20, false);
+  printNthTimes(os, actualPattern, actualRepetition, false);
 
   BOOST_CHECK_EQUAL(os.str(), expectedOutput);
 }
@@ -55,7 +57,7 @@ BOOST_AUTO_TEST_CASE( test_with_empty_pattern)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-BOOST_AUTO_TEST_SUITE( test_createFromInput )
+BOOST_AUTO_TEST_SUITE( test_askUserForRepetition )
 
 BOOST_AUTO_TEST_CASE( test_with_valid_input)
 {
@@ -65,15 +67,33 @@ BOOST_AUTO_TEST_CASE( test_with_valid_input)
 
   const UserInput expectedUserInput{actualPattern, actualRepetition};
 
+  // Act & Assert
+  testForCreateFromInput(expectedUserInput);
+}
+
+BOOST_AUTO_TEST_CASE( test_with_no_repetition)
+{
+  // Set up
+  const int actualRepetition = 0;
+  const std::string actualPattern = "/";
+
+  const UserInput expectedUserInput{actualPattern, actualRepetition};
+
+  // Assert
+  testForCreateFromInput(expectedUserInput);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+void testForCreateFromInput(const UserInput &expectedUserInput)
+{
   // Act
   std::ostringstream os{};
-  std::istringstream is{"/\n5"};
+  std::istringstream is{expectedUserInput.ReconstructSingleInput()};
 
-  auto actualUserInput = CreateFromInput(is, os);
-
+  auto actualUserInput = askUserForRepetition(is, os);
   // Assert
   BOOST_CHECK_EQUAL(expectedUserInput.toRepeat, actualUserInput.toRepeat);
   BOOST_CHECK_EQUAL(expectedUserInput.numberOfRepeat,actualUserInput.numberOfRepeat);
 }
 
-BOOST_AUTO_TEST_SUITE_END()

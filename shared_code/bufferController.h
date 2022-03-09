@@ -8,15 +8,13 @@
 #include <iostream>
 #include <UserInput.h>
 
-#define MAX_ALLOWED_BUFFER_SIZE 1000
-
 void printNthTimes(std::ostream &output,
    const std::string &toRepeat,
    unsigned int timesToRepeat,
    bool withNLine = true,
-   unsigned int maxBufferSize = MAX_ALLOWED_BUFFER_SIZE
+   unsigned int maxBufferSize = 1000
 );
 
-UserInput CreateFromInput(std::istream& input, std::ostream& userPrompt);
+UserInput askUserForRepetition(std::istream &input, std::ostream &userPrompt);
 
 #endif //NFILER__BUFFERCONTROLLER_H_

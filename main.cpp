@@ -3,31 +3,45 @@
 #include <sstream>
 #include <bufferController.h>
 
-const size_t k_maxAllowedBufferSize = 1000;
-
-
-
-UserInput CreateFromInput(std::istream& input, std::ostream& userPrompt)
-{
-  UserInput providedInput{};
-  size_t size = -2;
-  std::cout << size << std::endl;
-  userPrompt << "Enter pattern to be repeated" << std::endl;
-  std::getline(input, providedInput.toRepeat);
-  userPrompt << "Enter number of repetition" << std::endl;
-  input >> providedInput.numberOfRepeat;
-  if (input.fail())
-  {
-	userPrompt << "No valid number provided" << std::endl;
-  }
-  return providedInput;
-}
+void EndProgramForUserMistake(const std::string &message);
 
 int main() {
+
+  UserInput userInput{};
+
+  try
+  {
+    userInput = askUserForRepetition(std::cin, std::cout);
+  }
+  catch (const std::invalid_argument &error)
+  {
+    EndProgramForUserMistake("No number was given.");
+  }
+  catch (const std::out_of_range &error)
+  {
+    EndProgramForUserMistake("Amount of number is to big.");
+  }
+
+  const auto absoluteAmount = static_cast<unsigned int>(
+      std::abs(userInput.numberOfRepeat)
+    );
+  const auto bar = std::string(30, '=');
+
+  std::cout << bar << std::endl;
+  printNthTimes(
+      std::cout,
+      userInput.toRepeat,
+      absoluteAmount
+    );
 
   return 0;
 }
 
+void EndProgramForUserMistake(const std::string &message)
+{
+  std::cerr << message << std::endl;
+  exit(0);
+}
 
 
 
