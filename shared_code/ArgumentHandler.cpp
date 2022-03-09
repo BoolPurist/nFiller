@@ -5,7 +5,7 @@
 #include <ArgumentHandler.h>
 
 void printRequestedRepetition(const UserInput &givenInput, bool printWithBar);
-UserInput validateAndConvertCommandLineArgs(int argc, char** argv);
+UserInput processCommandLineArgs(int argc, char** argv);
 void endForInvalidNumber();
 void endForOutOfRangeNumber();
 
@@ -53,11 +53,11 @@ void printRequestedRepetition(const UserInput &givenInput, bool printWithBar)
 
 void handleCommandLineInput(int argc, char** argv)
 {
-  auto converted = validateAndConvertCommandLineArgs(argc, argv);
+  auto converted = processCommandLineArgs(argc, argv);
   printRequestedRepetition(converted, false);
 }
 
-UserInput validateAndConvertCommandLineArgs(int argc, char** argv)
+UserInput processCommandLineArgs(int argc, char** argv)
 {
 
   if (argc != 3)
