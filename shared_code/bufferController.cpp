@@ -71,7 +71,6 @@ UserInput askUserForRepetition(std::istream& input, std::ostream& userPrompt)
   }
   catch (const std::invalid_argument &error)
   {
-
     // no valid number was entered like "aaa44"
     throw;
   }

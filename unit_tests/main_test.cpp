@@ -6,6 +6,7 @@
 
 #include <boost/test/included/unit_test.hpp>
 
+#include <iostream>
 #include <bufferController.h>
 #include <UserInput.h>
 
@@ -81,6 +82,33 @@ BOOST_AUTO_TEST_CASE( test_with_no_repetition)
 
   // Assert
   testForCreateFromInput(expectedUserInput);
+}
+
+BOOST_AUTO_TEST_CASE( test_if_invalid_argument_thrown )
+{
+  // Set up
+  const std::string pattern{"a\n"};
+  const std::string invalidNumber{"ab4a"};
+
+  std::ostringstream os{};
+  std::istringstream is{pattern + invalidNumber};
+  // Act & Assert
+  BOOST_CHECK_THROW(askUserForRepetition(is, os), std::invalid_argument);
+}
+
+BOOST_AUTO_TEST_CASE( test_if_out_of_range_thrown )
+{
+  // Set up
+  const std::string pattern{"a\n"};
+  const std::string invalidNumber{
+    "222222222222222222222222222222222222222222222222222222222222222222222222"
+  };
+
+  std::ostringstream os{};
+  std::istringstream is{pattern + invalidNumber};
+
+  // Act & Assert
+  BOOST_CHECK_THROW(askUserForRepetition(is, os), std::out_of_range);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
