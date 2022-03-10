@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <RepetitionRequest.h>
+#include "help.h"
 
 /// Writes the result of the requested repetition of a pattern to the given buffer
 /// It flushes the buffer whenever the max buffer size would be exceeded

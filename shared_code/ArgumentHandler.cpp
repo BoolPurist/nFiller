@@ -68,17 +68,19 @@ void handleCommandLineInput(int argc, char** argv)
 
 RepetitionRequest processCommandLineArgs(int argc, char** argv)
 {
-
-  if (argc != 3)
-  {
-    endProgramForUserMistake("2 arguments are required");
-  }
-
   std::vector<std::string> commandLineArgs{};
   commandLineArgs.assign(argv + 1, argv + argc);
 
   RepetitionRequest processedInput{};
   processedInput.toRepeat = commandLineArgs.front();
+
+  provideUserWithHelpIfWanted(processedInput.toRepeat);
+  if (argc != 3)
+  {
+    endProgramForUserMistake("2 arguments are required");
+  }
+
+  provideUserWithHelpIfWanted(processedInput.toRepeat);
 
   const std::string &unconvertedNumber = commandLineArgs.back();
   int convertedNumber{};

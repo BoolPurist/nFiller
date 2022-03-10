@@ -5,10 +5,11 @@
 #ifndef NFILLER_SHARED_CODE_ARGUMENT_HANDLER_H_
 #define NFILLER_SHARED_CODE_ARGUMENT_HANDLER_H_
 
-#include "RepetitionRequest.h"
-#include "bufferController.h"
 #include <string>
 #include <vector>
+#include "help.h"
+#include "RepetitionRequest.h"
+#include "bufferController.h"
 
 /// User made a mistake which makes fulfilling the given task
 /// for this run impossible. User gets a message shown on the console.

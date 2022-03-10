@@ -58,6 +58,8 @@ RepetitionRequest askUserForRepetition(std::istream& input, std::ostream& userPr
   userPrompt << "Enter pattern to be repeated" << std::endl;
   std::getline(input, providedInput.toRepeat);
 
+  provideUserWithHelpIfWanted(providedInput.toRepeat);
+
   userPrompt << "Enter number of repetition" << std::endl;
   std::string enteredForNumber{};
   input >> enteredForNumber;
