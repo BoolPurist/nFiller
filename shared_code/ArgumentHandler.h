@@ -16,7 +16,7 @@
 /// Note: One could instead let the user reenter the information.
 /// This complicates things and is not a option for the command line approach neither.
 void endProgramForUserMistake(const std::string &message);
-/// Asks the user for the needed information and
+/// Asks the user for the needed information in interactive dialog and
 /// then prints out the result to the console.
 void handleInteractiveUsage();
 /// Logic run to if the argument were provided via command line instead of
