@@ -7,9 +7,9 @@
 
 #include <iostream>
 #include <bufferController.h>
-#include <UserInput.h>
+#include <RepetitionRequest.h>
 
-void testForCreateFromInput(const UserInput &expectedUserInput);
+void testForCreateFromInput(const RepetitionRequest &expectedUserInput);
 
 BOOST_AUTO_TEST_SUITE( test_printNTimes )
 
@@ -90,7 +90,7 @@ BOOST_AUTO_TEST_CASE( test_with_valid_input)
   const int actualRepetition = 5;
   const std::string actualPattern = "/";
 
-  const UserInput expectedUserInput{actualPattern, actualRepetition};
+  const RepetitionRequest expectedUserInput{actualPattern, actualRepetition};
 
   // Act & Assert
   testForCreateFromInput(expectedUserInput);
@@ -102,7 +102,7 @@ BOOST_AUTO_TEST_CASE( test_with_no_repetition)
   const int actualRepetition = 0;
   const std::string actualPattern = "/";
 
-  const UserInput expectedUserInput{actualPattern, actualRepetition};
+  const RepetitionRequest expectedUserInput{actualPattern, actualRepetition};
 
   // Assert
   testForCreateFromInput(expectedUserInput);
@@ -141,7 +141,7 @@ BOOST_AUTO_TEST_SUITE( test_UserInput )
 
 BOOST_AUTO_TEST_CASE(test_ouputstream_operater)
 {
-  const UserInput actualUserInput{"yu", 2};
+  const RepetitionRequest actualUserInput{"yu", 2};
   const std::string expectedOutput{"toRepeat: yu numberOfRepeat: 2"};
 
   std::ostringstream actualOutput{};
@@ -153,7 +153,7 @@ BOOST_AUTO_TEST_CASE(test_ouputstream_operater)
 BOOST_AUTO_TEST_SUITE_END()
 
 
-void testForCreateFromInput(const UserInput &expectedUserInput)
+void testForCreateFromInput(const RepetitionRequest &expectedUserInput)
 {
   // Act
   std::ostringstream os{};

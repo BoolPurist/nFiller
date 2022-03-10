@@ -5,7 +5,7 @@
 #ifndef NFILLER_SHARED_CODE_ARGUMENT_HANDLER_H_
 #define NFILLER_SHARED_CODE_ARGUMENT_HANDLER_H_
 
-#include "UserInput.h"
+#include "RepetitionRequest.h"
 #include "bufferController.h"
 #include <string>
 #include <vector>

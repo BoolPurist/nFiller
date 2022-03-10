@@ -51,9 +51,9 @@ void writeToBufferNTimes(
   output << std::endl;
 }
 
-UserInput askUserForRepetition(std::istream& input, std::ostream& userPrompt)
+RepetitionRequest askUserForRepetition(std::istream& input, std::ostream& userPrompt)
 {
-  UserInput providedInput{};
+  RepetitionRequest providedInput{};
 
   userPrompt << "Enter pattern to be repeated" << std::endl;
   std::getline(input, providedInput.toRepeat);

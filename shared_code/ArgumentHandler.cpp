@@ -6,11 +6,11 @@
 
 /// Carries out task of writing the requested repetition.
 /// Precondition: This function expects validated information.
-void printRequestedRepetition(const UserInput &givenInput, bool printWithBar);
+void printRequestedRepetition(const RepetitionRequest &givenInput, bool printWithBar);
 /// Validates and tries to convert the given in line commands.
 /// If validation is successful then the structured information for an repetition
 /// request is returned.
-UserInput processCommandLineArgs(int argc, char** argv);
+RepetitionRequest processCommandLineArgs(int argc, char** argv);
 /// Prints message for not given number like "ab"
 void endForInvalidNumber();
 /// Prints message for too big number like
@@ -20,7 +20,7 @@ void endForOutOfRangeNumber();
 
 void handleInteractiveUsage()
 {
-  UserInput userInput{};
+  RepetitionRequest userInput{};
 
   // Checking if the user is providing a valid number for the repetition.
   try
@@ -39,7 +39,7 @@ void handleInteractiveUsage()
   printRequestedRepetition(userInput, true);
 }
 
-void printRequestedRepetition(const UserInput &givenInput, bool printWithBar)
+void printRequestedRepetition(const RepetitionRequest &givenInput, bool printWithBar)
 {
   const auto absoluteAmount = static_cast<unsigned int>(
     std::abs(givenInput.numberOfRepeat)
@@ -66,7 +66,7 @@ void handleCommandLineInput(int argc, char** argv)
   printRequestedRepetition(converted, false);
 }
 
-UserInput processCommandLineArgs(int argc, char** argv)
+RepetitionRequest processCommandLineArgs(int argc, char** argv)
 {
 
   if (argc != 3)
@@ -77,7 +77,7 @@ UserInput processCommandLineArgs(int argc, char** argv)
   std::vector<std::string> commandLineArgs{};
   commandLineArgs.assign(argv + 1, argv + argc);
 
-  UserInput processedInput{};
+  RepetitionRequest processedInput{};
   processedInput.toRepeat = commandLineArgs.front();
 
   const std::string &unconvertedNumber = commandLineArgs.back();

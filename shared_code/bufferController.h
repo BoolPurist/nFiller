@@ -6,7 +6,7 @@
 #define NFILLER_BUFFER_CONTROLLER_HEADER_
 
 #include <iostream>
-#include <UserInput.h>
+#include <RepetitionRequest.h>
 
 /// Writes the result of the requested repetition of a pattern to the given buffer
 /// It flushes the buffer whenever the max buffer size would be exceeded
@@ -27,6 +27,6 @@ void writeToBufferNTimes(
 /// Note: It throws invalid_argument if the given string is not a number like "ab"
 /// Note: It throws out_of_range if the given string as number is too big for
 /// integer value like "2222222222222222222222222222222222222222222"
-UserInput askUserForRepetition(std::istream &input, std::ostream &userPrompt);
+RepetitionRequest askUserForRepetition(std::istream &input, std::ostream &userPrompt);
 
 #endif //NFILLER_BUFFER_CONTROLLER_HEADER_

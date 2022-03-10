@@ -2,18 +2,18 @@
 // Created by nicegraphic on 3/6/22.
 //
 
-#include "UserInput.h"
+#include "RepetitionRequest.h"
 
-std::ostream &operator<<(std::ostream &os, const UserInput &input) {
+std::ostream &operator<<(std::ostream &os, const RepetitionRequest &input) {
   os << "toRepeat: " << input.toRepeat << " numberOfRepeat: " << input.numberOfRepeat;
   return os;
 }
 
-UserInput::UserInput(const std::string &to_repeat, int number_of_repeat)
+RepetitionRequest::RepetitionRequest(const std::string &to_repeat, int number_of_repeat)
 	: toRepeat(to_repeat), numberOfRepeat(number_of_repeat) {}
-UserInput::UserInput()=default;
+RepetitionRequest::RepetitionRequest()=default;
 
-std::string UserInput::ReconstructSingleInput() const {
+std::string RepetitionRequest::ReconstructSingleInput() const {
   std::string reconstructed{toRepeat};
   reconstructed += "\n";
   reconstructed += std::to_string(numberOfRepeat);

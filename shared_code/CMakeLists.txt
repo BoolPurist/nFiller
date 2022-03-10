@@ -1,7 +1,7 @@
 include(../functions_and_macros.cmake)
 
 set(SHARED_CODE_TARGET_NAME shared_code)
-list(APPEND SOURCES UserInput.cpp bufferController.cpp ArgumentHandler.cpp)
+list(APPEND SOURCES RepetitionRequest.cpp bufferController.cpp ArgumentHandler.cpp)
 
 GET_HEADERS_FROM(HEADERS SOURCES)
 
