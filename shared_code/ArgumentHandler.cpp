@@ -9,10 +9,13 @@ UserInput processCommandLineArgs(int argc, char** argv);
 void endForInvalidNumber();
 void endForOutOfRangeNumber();
 
+/// Asks the user for the needed information and
+/// then prints out the result to the console.
 void handleInteractiveUsage()
 {
   UserInput userInput{};
 
+  // Checking if the user is providing a valid number for the repetition.
   try
   {
     userInput = askUserForRepetition(std::cin, std::cout);
@@ -41,8 +44,7 @@ void printRequestedRepetition(const UserInput &givenInput, bool printWithBar)
     std::cout << bar << std::endl;
   }
 
-
-  printNthTimes(
+  writeToBufferNTimes(
     std::cout,
     givenInput.toRepeat,
     absoluteAmount,

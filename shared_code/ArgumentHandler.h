@@ -2,8 +2,8 @@
 // Created by nicegraphic on 3/9/22.
 //
 
-#ifndef NFILER_SHARED_CODE_ARGUMENTHANDLER_H_
-#define NFILER_SHARED_CODE_ARGUMENTHANDLER_H_
+#ifndef NFILLER_SHARED_CODE_ARGUMENT_HANDLER_H_
+#define NFILLER_SHARED_CODE_ARGUMENT_HANDLER_H_
 
 #include "UserInput.h"
 #include "bufferController.h"
@@ -15,4 +15,4 @@ void handleInteractiveUsage();
 void handleCommandLineInput(int argc, char** argv);
 
 
-#endif //NFILER_SHARED_CODE_ARGUMENTHANDLER_H_
+#endif //NFILLER_SHARED_CODE_ARGUMENT_HANDLER_H_

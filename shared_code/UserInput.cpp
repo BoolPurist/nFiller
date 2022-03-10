@@ -11,7 +11,7 @@ std::ostream &operator<<(std::ostream &os, const UserInput &input) {
 
 UserInput::UserInput(const std::string &to_repeat, int number_of_repeat)
 	: toRepeat(to_repeat), numberOfRepeat(number_of_repeat) {}
-UserInput::UserInput() {}
+UserInput::UserInput()=default;
 
 std::string UserInput::ReconstructSingleInput() const {
   std::string reconstructed{toRepeat};

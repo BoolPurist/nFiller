@@ -2,8 +2,7 @@
 // Created by nicegraphic on 3/6/22.
 //
 
-#define BOOST_TEST_MODULE "Unit Test for N-Fill"
-
+#define BOOST_TEST_MAIN nFiller Unit Tests
 #include <boost/test/included/unit_test.hpp>
 
 #include <iostream>
@@ -17,13 +16,17 @@ BOOST_AUTO_TEST_SUITE( test_printNTimes )
 BOOST_AUTO_TEST_CASE( test_with_new_line )
 {
   // Set up
-  const std::string expectedOutput = "abab\nab\n";
-  const std::string actualPattern = "ab";
-  const int actualMaxBufferSize = 5;
+  const std::string expectedOutput = "apple\napple\napple\n";
+  const std::string actualPattern = "apple";
+  const int actualMaxBufferSize = 6;
   const int actualRepetition = 3;
 
   std::ostringstream os{};
-  printNthTimes(os, actualPattern, actualRepetition, true, actualMaxBufferSize);
+  writeToBufferNTimes(os,
+                      actualPattern,
+                      actualRepetition,
+                      true,
+                      actualMaxBufferSize);
 
   BOOST_CHECK_EQUAL(os.str(), expectedOutput);
 }
@@ -36,7 +39,7 @@ BOOST_AUTO_TEST_CASE( test_noNewLine )
   const int actualRepetition = 20;
 
   std::ostringstream os{};
-  printNthTimes(os, actualPattern, actualRepetition, false);
+  writeToBufferNTimes(os, actualPattern, actualRepetition, false);
 
   BOOST_CHECK_EQUAL(os.str(), expectedOutput);
 }
@@ -51,13 +54,13 @@ BOOST_AUTO_TEST_CASE( test_noNewLine_several_flushes )
   const int actualMaxBufferSize = 10;
 
   std::ostringstream os{};
-  printNthTimes(
-      os,
-      actualPattern,
-      actualRepetition,
-      false,
-      actualMaxBufferSize
-    );
+  writeToBufferNTimes(
+    os,
+    actualPattern,
+    actualRepetition,
+    false,
+    actualMaxBufferSize
+  );
 
   BOOST_CHECK_EQUAL(os.str(), expectedOutput);
 }
@@ -71,7 +74,7 @@ BOOST_AUTO_TEST_CASE( test_with_empty_pattern)
 
   // Act
   std::ostringstream os{};
-  printNthTimes(os, actualPattern, actualRepetition, false);
+  writeToBufferNTimes(os, actualPattern, actualRepetition, false);
 
   // Assert
   BOOST_CHECK(os.str() == expectedOutput);

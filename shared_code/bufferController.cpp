@@ -5,7 +5,7 @@
 #include "bufferController.h"
 #include "UserInput.h"
 
-void printNthTimes(
+void writeToBufferNTimes(
   std::ostream &output,
 	const std::string &toRepeat,
 	unsigned int timesToRepeat,
@@ -62,7 +62,7 @@ UserInput askUserForRepetition(std::istream& input, std::ostream& userPrompt)
   std::string enteredForNumber{};
   input >> enteredForNumber;
 
-  int converted{};
+  int converted;
   try
   {
     converted = std::stoi(enteredForNumber);

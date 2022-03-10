@@ -2,8 +2,8 @@
 // Created by nicegraphic on 3/6/22.
 //
 
-#ifndef NFILER_SHARED_CODE_USERINPUT_H_
-#define NFILER_SHARED_CODE_USERINPUT_H_
+#ifndef NFILLER_SHARED_CODE_USER_INPUT_H_
+#define NFILLER_SHARED_CODE_USER_INPUT_H_
 
 #include <string>
 #include <iostream>
@@ -18,4 +18,4 @@ struct UserInput
   friend std::ostream &operator<<(std::ostream &os, const UserInput &input);
 };
 
-#endif //NFILER_SHARED_CODE_USERINPUT_H_
+#endif //NFILLER_SHARED_CODE_USER_INPUT_H_
