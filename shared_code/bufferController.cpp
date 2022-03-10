@@ -3,30 +3,30 @@
 //
 
 #include "bufferController.h"
-#include "UserInput.h"
 
 void writeToBufferNTimes(
   std::ostream &output,
 	const std::string &toRepeat,
 	unsigned int timesToRepeat,
-	bool withNLine,
+	bool newLineOnFlush,
 	unsigned int maxBufferSize
   )
 {
   const auto sizeOfOneRepeat = toRepeat.size();
   maxBufferSize = static_cast<size_t>(maxBufferSize);
-  size_t bufferCount = 0;
+  size_t charsWrittenLastFlush = 0;
 
-  auto writeToBuffer = [&output, &toRepeat, &bufferCount]
+  // Also updates count of chars written to buffer since the last flush.
+  auto writeToBuffer = [&output, &toRepeat, &charsWrittenLastFlush]
     (size_t newBufferSize) -> void
     {
       output << toRepeat;
-      bufferCount = newBufferSize;
+      charsWrittenLastFlush = newBufferSize;
     };
 
-  for (size_t i_printTimes{0}; i_printTimes < timesToRepeat; i_printTimes++)
+  for (size_t i_repetition{0}; i_repetition < timesToRepeat; i_repetition++)
   {
-    size_t newBufferSize = bufferCount + sizeOfOneRepeat;
+    size_t newBufferSize = charsWrittenLastFlush + sizeOfOneRepeat;
 
     if (newBufferSize < maxBufferSize)
     {
@@ -35,7 +35,7 @@ void writeToBufferNTimes(
     else
     {
       // Flushing stream buffer to prevent going over max buffer size.
-      if (withNLine)
+      if (newLineOnFlush)
       {
         output << std::endl;
       }
@@ -62,6 +62,7 @@ UserInput askUserForRepetition(std::istream& input, std::ostream& userPrompt)
   std::string enteredForNumber{};
   input >> enteredForNumber;
 
+  // Validate the 2. string if it is actual a number and if it not too big.
   int converted;
   try
   {

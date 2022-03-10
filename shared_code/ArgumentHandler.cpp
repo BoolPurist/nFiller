@@ -4,13 +4,20 @@
 
 #include <ArgumentHandler.h>
 
+/// Carries out task of writing the requested repetition.
+/// Precondition: This function expects validated information.
 void printRequestedRepetition(const UserInput &givenInput, bool printWithBar);
+/// Validates and tries to convert the given in line commands.
+/// If validation is successful then the structured information for an repetition
+/// request is returned.
 UserInput processCommandLineArgs(int argc, char** argv);
+/// Prints message for not given number like "ab"
 void endForInvalidNumber();
+/// Prints message for too big number like
+/// "2222222222222222222222222222222222222222222222222222222222222222222222222"
 void endForOutOfRangeNumber();
 
-/// Asks the user for the needed information and
-/// then prints out the result to the console.
+
 void handleInteractiveUsage()
 {
   UserInput userInput{};
